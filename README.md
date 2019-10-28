@@ -14,9 +14,9 @@ Make sure you that
 * your `GOPATH` and `GOROOT` environments are set properly.
 
 #### Makefile
-There is a [`Makefile`](Makefile) provided that offers a number of targets for preparing, building and running the service. To build and run the service against the [`configs/test.yml`](configs/test.yml) configuration, simply call the `run` target:
+There is a [`Makefile`](Makefile) provided that offers a number of targets for preparing, building and running the service. To build the service, simply run:
 ```
-make clean go-dep run
+make clean go-dep go-build
 ```
 
 ## License

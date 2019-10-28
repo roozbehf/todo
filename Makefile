@@ -92,5 +92,6 @@ go-build:
 go-build-all: go-build-pi go-build-linux go-build-windows go-build-mac
 
 run: go-build
-	./bin/$(TARGET) --port 8080 -c configs/test.yml
+	./bin/$(TARGET) --port 8080
+
 
