@@ -1,0 +1,107 @@
+swagger: "2.0"
+info:
+  title: ToDo
+  version: 0.1.0
+consumes:
+- application/json
+produces:
+- application/json
+schemes:
+- http
+paths:
+  /add/{itemTitle}:
+    parameters: 
+      - name: itemTitle
+        type: string
+        in: path
+        required: true
+    post:
+      description: Add a new todo item
+      operationId: addItem
+      responses:
+        202:
+          description: Accepted
+          schema:
+            $ref: '#/definitions/AddResponse'
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"          
+  /list:
+    get:
+      description: List all todo items
+      operationId: listItems
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: '#/definitions/ListResponse'
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /remove/{id}:
+    delete:
+      parameters:
+        - name: id
+          type: string
+          in: path
+          required: true
+      description: Delete all todo items
+      operationId: removeItem
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: '#/definitions/RemoveResponse'
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+definitions:
+  AddResponse:
+    type: object
+    required:
+      - id
+      - title
+    properties:
+      id:
+        type: string
+        description: the unique id of the newly added item
+      title:
+        type: string
+        description: title of the newly added item
+  ListResponse:
+    type: object
+    properties:
+      todoItems:
+        type: array
+        items: 
+          type: object
+          required:
+            - id
+            - title
+          properties:
+            id:
+              type: string
+              description: the unique id of the newly added item
+            title:
+              type: string
+              description: title of the newly added item
+    required:
+      - todoItems
+  RemoveResponse:
+    type: object
+    required:
+      - id
+      - title
+    properties:
+      id:
+        type: string
+        description: the unique id of the removed item
+      title:
+        type: string
+        description: title of the removed item
+  ErrorResponse:
+    type: string
+    
