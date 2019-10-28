@@ -26,6 +26,6 @@ echo "- List:"
 curl $URL/list
 echo ""
 
-echo "- Delete non-esisting one:"
+echo "- Delete non-existing one:"
 curl -X DELETE $URL/remove/10
 echo ""
